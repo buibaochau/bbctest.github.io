@@ -3,40 +3,806 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Webpage</title>
+    <title>Portfolio | Creative Designer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #6c63ff;
+            --secondary-color: #ff6584;
+            --dark-color: #2a2a2a;
+            --light-color: #f8f9fa;
+            --gray-color: #6c757d;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f4f4f4;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
         }
-        h1 {
-            color: #333;
-        }
+
         .container {
-            background: white;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 100px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--gray-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #5a52e0;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* About Section */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--gray-color);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--gray-color);
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .skill {
+            background-color: #e9ecef;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--dark-color);
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            background-color: #f8f9fa;
+        }
+
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: none;
+            border: none;
+            padding: 8px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--gray-color);
+            transition: all 0.3s;
+            border-radius: 20px;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            background-color: white;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .portfolio-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .portfolio-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .portfolio-item:hover .portfolio-img img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-info {
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .portfolio-info h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .portfolio-info p {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .contact-icon {
+            background-color: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .contact-details h3 {
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        .contact-details p {
+            color: var(--gray-color);
+        }
+
+        .contact-form {
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .footer-about {
+            flex: 2;
+            margin-right: 50px;
+        }
+
+        .footer-about p {
+            color: #adb5bd;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            flex: 1;
+        }
+
+        .footer-links h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content, .contact-content {
+                flex-direction: column;
+            }
+            
+            .about-img, .about-text, .contact-info, .contact-form {
+                width: 100%;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .footer-about, .footer-links {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div id="SITE_CONTAINER"><div id="main_MF" class="main_MF"><div id="SCROLL_TO_TOP" class="Vd6aQZ ignore-focus SCROLL_TO_TOP" role="region" tabindex="-1" aria-label="top of page"><span class="mHZSwn">top of page</span></div><button id="SKIP_TO_CONTENT_BTN" class="SKIP_TO_CONTENT_BTN LHrbPP has-custom-focus" tabindex="0">Skip to Main Content</button><div id="WIX_ADS" class="MyEGHM czJOIz ytGGBw"><a data-testid="linkElement" href="https://www.wix.com/lpviral/enviral?utm_campaign=vir_wixad_live&amp;adsVersion=banner_2024&amp;orig_msid=aa99f552-cce6-4d9b-96f0-a304175f7068&amp;orig_msid=787512c5-806d-412b-8e83-6933c79ad728&amp;adsVersion=banner_2024" target="_blank" rel="nofollow" class="onAlzG q6N3mD has-custom-focus"><span class="HW1JeT"><span data-hook="freemium-text" class="LIzdTp"><div data-testid="bannerLogo" class="FAeSJk"><div class="bbyQBf"><svg width="60" height="20" viewBox="0 0 39 15" fill="none" aria-label="wix"><g clip-path="url(#clip0_36_214)"><path d="M38.9999 0H36.8456C36.248 0 35.6894 0.280264 35.3538 0.74896L32.4728 4.77402C32.396 4.88076 32.2297 4.88076 32.1529 4.77402L29.2719 0.74896C28.9369 0.280264 28.3777 0 27.7801 0H25.6258L30.7581 7.16998L25.6541 14.3H27.8084C28.406 14.3 28.9646 14.0197 29.3002 13.551L32.1529 9.56593C32.2297 9.45919 32.396 9.45919 32.4728 9.56593L35.3254 13.551C35.6604 14.0197 36.2196 14.3 36.8172 14.3H38.9715L33.8676 7.16998L38.9999 0Z" fill="black"></path><path d="M21.193 1.46274V14.3H22.2226C23.0758 14.3 23.7673 13.6453 23.7673 12.8373V0H22.7377C21.8844 0 21.193 0.654743 21.193 1.46274Z" fill="black"></path><path d="M19.3054 0H18.3892C17.3804 0 16.5063 0.660706 16.2828 1.59214L14.233 10.1259L12.4389 2.15982C12.1071 0.68754 10.512 -0.305308 8.87973 0.121646C7.84005 0.393561 7.06927 1.22541 6.84446 2.22422L5.06864 10.1151L3.02267 1.59273C2.79849 0.661302 1.92443 0 0.915617 0H0L3.43388 14.2994H4.73489C5.91562 14.2994 6.93577 13.5176 7.18199 12.424L9.37721 2.66787C9.40429 2.54682 9.5189 2.45916 9.64925 2.45916C9.7796 2.45916 9.89421 2.54682 9.92129 2.66787L12.1184 12.4246C12.3646 13.5182 13.3848 14.2994 14.5655 14.2994H15.8709L19.3054 0Z" fill="black"></path></g><defs><clipPath id="clip0_36_214"><rect width="39" height="14.3" fill="white"></rect></clipPath></defs></svg></div></div> This website was built on Wix. Create yours today.</span><span data-hook="freemium-button" class="_ollQ6 onAlzG">Get Started</span></span></a></div><div id="BACKGROUND_GROUP" class="backgroundGroup_c1dmp BACKGROUND_GROUP"><div id="BACKGROUND_GROUP_TRANSITION_GROUP"><div id="pageBackground_c1dmp" data-media-height-override-type="" data-media-position-override="false" class="pageBackground_c1dmp BmZ5pC"><div id="bgLayers_pageBackground_c1dmp" data-hook="bgLayers" data-motion-part="BG_LAYER pageBackground_c1dmp" class="MW5IWV"><div data-testid="colorUnderlay" class="LWbAav Kv1aVt"></div><div id="bgMedia_pageBackground_c1dmp" data-motion-part="BG_MEDIA pageBackground_c1dmp" class="VgO9Yg"></div><div data-testid="bgOverlay" class="m4khSP"></div></div></div></div></div><div id="site-root" class="site-root"><div id="masterPage" class="mesh-layout masterPage css-editing-scope"><header id="SITE_HEADER" class="AT7o0U SITE_HEADER wixui-header" tabindex="-1"><div class="lvxhkV"></div><div class="cKxVkc"><div class="vlM3HR"></div><div class="VrZrC0"><div data-mesh-id="SITE_HEADERinlineContent" data-testid="inline-content" class=""><div data-mesh-id="SITE_HEADERinlineContent-gridContainer" data-testid="mesh-container-content"><!--$--><section id="comp-kj9svnyb" class="comp-kj9svnyb CohWsy wixui-column-strip"><div id="bgLayers_comp-kj9svnyb" data-hook="bgLayers" data-motion-part="BG_LAYER comp-kj9svnyb" class="if7Vw2"><div data-testid="colorUnderlay" class="tcElKx i1tH8h"></div><div id="bgMedia_comp-kj9svnyb" data-motion-part="BG_MEDIA comp-kj9svnyb" class="wG8dni"></div></div><div data-testid="columns" class="V5AUxf"><!--$--><div id="comp-kj9svo67" class="comp-kj9svo67 YzqVVZ wixui-column-strip__column"><div id="bgLayers_comp-kj9svo67" data-hook="bgLayers" data-motion-part="BG_LAYER comp-kj9svo67" class="MW5IWV"><div data-testid="colorUnderlay" class="LWbAav Kv1aVt"></div><div id="bgMedia_comp-kj9svo67" data-motion-part="BG_MEDIA comp-kj9svo67" class="VgO9Yg"></div></div><div data-mesh-id="comp-kj9svo67inlineContent" data-testid="inline-content" class=""><div data-mesh-id="comp-kj9svo67inlineContent-gridContainer" data-testid="mesh-container-content"><!--$--><div id="comp-kjcoigli" class="comp-kjcoigli wixui-vector-image"><a data-testid="linkElement" href="https://ngadangthanhnga.wixsite.com/portfolio" target="_self" class="aeyn4z"><div data-testid="svgRoot-comp-kjcoigli" class="VDJedC l4CAhn"><svg preserveAspectRatio="none" data-bbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" role="img" aria-label="Homepage">
-    <g>
-        <path d="M200 100c0 55.228-44.772 100-100 100S0 155.228 0 100 44.772 0 100 0s100 44.772 100 100z"></path>
-    </g>
-</svg></div></a></div><!--/$--><!--$--><div id="comp-kjcog6xb" class="Z_l5lU MMl86N zQ9jDz qvSjx3 Vq6kJx comp-kjcog6xb wixui-rich-text" data-testid="richTextElement"><p class="font_4 wixui-rich-text__text" style="font-size:22px;"><a href="https://ngadangthanhnga.wixsite.com/portfolio" target="_self" class="wixui-rich-text__text">Nga Thanh Dang&nbsp;</a></p></div><!--/$--></div></div></div><!--/$--><!--$--><div id="comp-kj9sw3na" class="comp-kj9sw3na YzqVVZ wixui-column-strip__column"><div id="bgLayers_comp-kj9sw3na" data-hook="bgLayers" data-motion-part="BG_LAYER comp-kj9sw3na" class="MW5IWV"><div data-testid="colorUnderlay" class="LWbAav Kv1aVt"></div><div id="bgMedia_comp-kj9sw3na" data-motion-part="BG_MEDIA comp-kj9sw3na" class="VgO9Yg"></div></div><div data-mesh-id="comp-kj9sw3nainlineContent" data-testid="inline-content" class=""><div data-mesh-id="comp-kj9sw3nainlineContent-gridContainer" data-testid="mesh-container-content"><!--$--><wix-dropdown-menu id="comp-kj9sx3ul" class="nYRjqR GUSTu5 comp-kj9sx3ul wixui-dropdown-menu hidden-during-prewarmup" tabindex="-1" dir="ltr" data-stretch-buttons-to-menu-width="false" data-same-width-buttons="true" data-num-items="3" data-menuborder-y="0" data-menubtn-border="0" data-ribbon-els="0" data-label-pad="0" data-ribbon-extra="0" data-dropalign="right" style="visibility: inherit; overflow-x: visible;" data-dropmode="dropDown"><nav class="ONlyPu" id="comp-kj9sx3ulnavContainer" aria-label="Site"><ul class="qDaKPQ" id="comp-kj9sx3ulitemsContainer" style="text-align:right" data-marginallchildren="true"><li id="comp-kj9sx3ul0" data-direction="ltr" data-listposition="center" data-data-id="dataItem-kjckpdtq" data-state="menu false  link" data-index="0" class="JAo9_G wixui-dropdown-menu__item rhHoTC" data-original-gap-between-text-and-btn="10" aria-hidden="false" style="width: 87px; height: 24px; position: relative; box-sizing: border-box; overflow: visible; visibility: inherit;"><a data-testid="linkElement" href="https://ngadangthanhnga.wixsite.com/portfolio/resume" target="_self" class="wIGMae"><div class="Zw7XIs"><div class=""><p class="aWTgIN" id="comp-kj9sx3ul0label" style="line-height: 24px;">Resume</p></div></div></a></li><li id="comp-kj9sx3ul1" data-direction="ltr" data-listposition="center" data-data-id="dataItem-kjckpkwk" data-state="menu false  link" data-index="1" class="JAo9_G wixui-dropdown-menu__item rhHoTC" data-original-gap-between-text-and-btn="11" aria-hidden="false" style="width: 87px; height: 24px; position: relative; box-sizing: border-box; overflow: visible; visibility: inherit;"><a data-testid="linkElement" href="https://ngadangthanhnga.wixsite.com/portfolio/projects" target="_self" class="wIGMae"><div class="Zw7XIs"><div class=""><p class="aWTgIN" id="comp-kj9sx3ul1label" style="line-height: 24px;">Projects</p></div></div></a></li><li id="comp-kj9sx3ul2" data-direction="ltr" data-listposition="right" data-data-id="dataItem-kjckpym0" data-state="menu false  link" data-index="2" class="JAo9_G wixui-dropdown-menu__item rhHoTC" data-original-gap-between-text-and-btn="11" aria-hidden="false" style="width: 87px; height: 24px; position: relative; box-sizing: border-box; overflow: visible; visibility: inherit;"><a data-testid="linkElement" href="https://ngadangthanhnga.wixsite.com/portfolio/contact" target="_self" class="wIGMae"><div class="Zw7XIs"><div class=""><p class="aWTgIN" id="comp-kj9sx3ul2label" style="line-height: 24px;">Contact</p></div></div></a></li><li id="comp-kj9sx3ul__more__" data-direction="ltr" data-listposition="right" data-state="menu false  header" data-index="__more__" data-dropdown="false" class="XFe7yJ rhHoTC" data-original-gap-between-text-and-btn="11" aria-hidden="true" style="height: 0px; overflow: hidden; position: absolute; visibility: hidden;"><div data-testid="linkElement" class="wIGMae" tabindex="0" aria-haspopup="true"><div class="Zw7XIs"><div class=""><p class="aWTgIN" id="comp-kj9sx3ul__more__label" tabindex="-1">More</p></div></div></div></li></ul><div class="A4aeYo" id="comp-kj9sx3uldropWrapper" data-dropalign="right" data-dropdown-shown="false"><ul class="ByVsPT wixui-dropdown-menu__submenu" id="comp-kj9sx3ulmoreContainer"></ul></div><div style="display:none" id="comp-kj9sx3ulnavContainer-hiddenA11ySubMenuIndication">Use tab to navigate through the menu items.</div></nav></wix-dropdown-menu><!--/$--></div></div></div><!--/$--></div></section><!--/$--></div></div></div></div></header><main id="PAGES_CONTAINER" class="PAGES_CONTAINER" tabindex="-1" data-main-content="true"><div id="SITE_PAGES" class="JsJXaX SITE_PAGES"><div id="SITE_PAGES_TRANSITION_GROUP" class="AnQkDU"><div id="c1dmp" class="dBAkHi c1dmp"><div class="PFkO7r wixui-page" data-testid="page-bg"></div><div class="HT5ybB"><!--$--><div id="Containerc1dmp" class="Containerc1dmp SPY_vo"><div data-mesh-id="Containerc1dmpinlineContent" data-testid="inline-content" class=""><div data-mesh-id="Containerc1dmpinlineContent-gridContainer" data-testid="mesh-container-content"><!--$--><div id="comp-kjcl52y9" class="MazNVa comp-kjcl52y9 wixui-image" data-motion-enter="done"><div data-testid="linkElement" class="j7pOnl"><img fetchpriority="high" sizes="319px" srcset="https://static.wixstatic.com/media/f0acb2_4affef003e064978ac8f7e823b1c9f89~mv2.jpg/v1/crop/x_3,y_0,w_955,h_955/fill/w_319,h_317,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/59401771_2010408839070204_24714375821399.jpg 1x, https://static.wixstatic.com/media/f0acb2_4affef003e064978ac8f7e823b1c9f89~mv2.jpg/v1/crop/x_3,y_0,w_955,h_955/fill/w_638,h_634,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/59401771_2010408839070204_24714375821399.jpg 2x" id="img_comp-kjcl52y9" src="https://static.wixstatic.com/media/f0acb2_4affef003e064978ac8f7e823b1c9f89~mv2.jpg/v1/crop/x_3,y_0,w_955,h_955/fill/w_319,h_317,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/59401771_2010408839070204_24714375821399.jpg" alt="59401771_2010408839070204_24714375821399" style="object-fit:cover" class="BI8PVQ Tj01hh" width="319" height="317"></div></div><!--/$--><!--$--><div id="comp-kj9sumrm" class="Z_l5lU MMl86N zQ9jDz qvSjx3 Vq6kJx comp-kj9sumrm wixui-rich-text" data-testid="richTextElement" style="--motion-left: 797px; --motion-top: 234.40000915527344px;" data-motion-enter="done"><h1 class="font_0 wixui-rich-text__text" style="font-size:62px;"><span style="font-size:62px;" class="wixui-rich-text__text"><span style="letter-spacing:-0.02em;" class="wixui-rich-text__text">Hello,&nbsp;</span></span></h1></div><!--/$--><!--$--><div id="comp-kj9surjo" class="Z_l5lU MMl86N zQ9jDz qvSjx3 Vq6kJx comp-kj9surjo wixui-rich-text" data-testid="richTextElement" data-motion-enter="done"><p class="font_4 wixui-rich-text__text" style="font-size:21px;"><span style="font-size:21px;" class="wixui-rich-text__text">I'm Nga Dang, nice to meet you :)</span></p></div><!--/$--><!--$--><div id="comp-kj9u78b4" class="Z_l5lU MMl86N zQ9jDz qvSjx3 Vq6kJx comp-kj9u78b4 wixui-rich-text" data-testid="richTextElement" data-motion-enter="done"><p class="font_8 wixui-rich-text__text" style="font-size:14px; line-height:1.6em;"><span style="font-size:14px;" class="wixui-rich-text__text">I'm a diligent, highly motivated and goal-oriented individual who seeks for challenges and learning opportunities.&nbsp;</span></p>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Portfolio</a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-<p class="font_8 wixui-rich-text__text" style="font-size:14px; line-height:1.6em;"><span style="font-size:14px;" class="wixui-rich-text__text"><span class="wixGuard wixui-rich-text__text">​</span></span></p>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Creative Designer & Developer</h1>
+            <p>I create beautiful, functional websites and digital experiences that help businesses grow and stand out in the digital world.</p>
+            <a href="#portfolio" class="btn">View My Work</a>
+            <a href="#contact" class="btn btn-outline">Get In Touch</a>
+        </div>
+    </section>
 
-<p class="font_8 wixui-rich-text__text" style="font-size:14px; line-height:1.6em;"><span style="font-size:14px;" class="wixui-rich-text__text">Let Nga-the-web ver introduces to you Nga-the-real ver:&nbsp;</span></p></div><!--/$--><!--$--><div id="comp-kpqb69sg" class="Z_l5lU MMl86N zQ9jDz qvSjx3 Vq6kJx comp-kpqb69sg wixui-rich-text" data-testid="richTextElement" data-motion-enter="done"><ul class="font_4 wixui-rich-text__text" style="font-size:14px;">
-<li class="wixui-rich-text__text">
-<p class="font_4 wixui-rich-text__text" style="font-size:14px;"><span style="font-size:14px;" class="wixui-rich-text__text">BA International Business Communication</span></p>
-</li>
-</ul></div><!--/$--><!--$--><div class="comp-kjcod4ll FubTgk" id="comp-kjcod4ll" aria-disabled="false" data-motion-enter="done"><a data-testid="linkElement" href="https://ngadangthanhnga.wixsite.com/portfolio/resume" target="_self" class="uDW_Qe wixui-button PlZyDq" aria-disabled="false" aria-label="Resume"><span class="l7_2fn wixui-button__label">Resume</span></a></div><!--/$--><!--$--><div class="comp-kjcod5ul FubTgk" id="comp-kjcod5ul" aria-disabled="false" data-motion-enter="done"><a data-testid="linkElement" href="https://ngadangthanhnga.wixsite.com/portfolio/projects" target="_self" class="uDW_Qe wixui-button PlZyDq" aria-disabled="false" aria-label="Projects"><span class="l7_2fn wixui-button__label">Projects</span></a></div><!--/$--><!--$--><div class="comp-kjcocqs6 FubTgk" id="comp-kjcocqs6" aria-disabled="false" data-motion-enter="done"><a data-testid="linkElement" href="https://ngadangthanhnga.wixsite.com/portfolio/contact" target="_self" class="uDW_Qe wixui-button PlZyDq" aria-disabled="false" aria-label="Contact"><span class="l7_2fn wixui-button__label">Contact</span></a></div><!--/$--></div></div></div><!--/$--></div></div></div></div></main><footer id="SITE_FOOTER" class="AT7o0U SITE_FOOTER wixui-footer" tabindex="-1"><div class="lvxhkV"></div><div class="cKxVkc"><div class="vlM3HR"></div><div class="VrZrC0"><div data-mesh-id="SITE_FOOTERinlineContent" data-testid="inline-content" class=""><div data-mesh-id="SITE_FOOTERinlineContent-gridContainer" data-testid="mesh-container-content"><!--$--><div id="comp-kjcp8qvu" class="comp-kjcp8qvu aVng1S wixui-horizontal-line"></div><!--/$--><!--$--><section id="comp-kj9u5y5z" class="comp-kj9u5y5z CohWsy wixui-column-strip"><div id="bgLayers_comp-kj9u5y5z" data-hook="bgLayers" data-motion-part="BG_LAYER comp-kj9u5y5z" class="if7Vw2"><div data-testid="colorUnderlay" class="tcElKx i1tH8h"></div><div id="bgMedia_comp-kj9u5y5z" data-motion-part="BG_MEDIA comp-kj9u5y5z" class="wG8dni"></div></div><div data-testid="columns" class="V5AUxf"><!--$--><div id="comp-kj9u5ybj" class="comp-kj9u5ybj YzqVVZ wixui-column-strip__column"><div id="bgLayers_comp-kj9u5ybj" data-hook="bgLayers" data-motion-part="BG_LAYER comp-kj9u5ybj" class="MW5IWV"><div data-testid="colorUnderlay" class="LWbAav Kv1aVt"></div><div id="bgMedia_comp-kj9u5ybj" data-motion-part="BG_MEDIA comp-kj9u5ybj" class="VgO9Yg"></div></div><div data-mesh-id="comp-kj9u5ybjinlineContent" data-testid="inline-content" class=""><div data-mesh-id="comp-kj9u5ybjinlineContent-gridContainer" data-testid="mesh-container-content"><!--$--><div id="comp-kjcp7mwn" class="Z_l5lU MMl86N zQ9jDz qvSjx3 Vq6kJx comp-kjcp7mwn wixui-rich-text" data-testid="richTextElement"><p class="font_5 wixui-rich-text__text" style="font-size:18px;">Phone</p></div><!--/$--><!--$--><div id="comp-kj9u7gc8" class="Z_l5lU MMl86N zQ9jDz qvSjx3 Vq6kJx comp-kj9u7gc8 wixui-rich-text" data-testid="richTextElement"><p class="font_8 wixui-rich-text__text" style="line-height:1.4em; font-size:16px;">(+84)35-654-2205</p></div><!--/$--></div></div></div><!--/$--><!--$--><div id="comp-kj9u6b1a" class="comp-kj9u6b1a YzqVVZ wixui-column-strip__column"><div id="bgLayers_comp-kj9u6b1a" data-hook="bgLayers" data-motion-part="BG_LAYER comp-kj9u6b1a" class="MW5IWV"><div data-testid="colorUnderlay" class="LWbAav Kv1aVt"></div><div id="bgMedia_comp-kj9u6b1a" data-motion-part="BG_MEDIA comp-kj9u6b1a" class="VgO9Yg"></div></div><div data-mesh-id="comp-kj9u6b1ainlineContent" data-testid="inline-content" class=""><div data-mesh-id="comp-kj9u6b1ainlineContent-gridContainer" data-testid="mesh-container-content"><!--$--><div id="comp-kjcp7w67" class="Z_l5lU MMl86N zQ9jDz qvSjx3 Vq6kJx comp-kjcp7w67 wixui-rich-text" data-testid="richTextElement"><p class="font_5 wixui-rich-text__text" style="font-size:18px;">Email</p></div><!--/$--><!--$--><div id="comp-kj9u7jfm" class="Z_l5lU MMl86N zQ9jDz qvSjx3 Vq6kJx comp-kj9u7jfm wixui-rich-text" data-testid="richTextElement"><p class="font_8 wixui-rich-text__text" style="line-height:1.4em; font-size:16px;"><a data-auto-recognition="true" href="mailto:dangthanhnga4200@gmail.com" class="wixui-rich-text__text">dangthanhnga4200@gmail.com</a></p></div><!--/$--></div></div></div><!--/$--><!--$--><div id="comp-kj9u6e6n" class="comp-kj9u6e6n YzqVVZ wixui-column-strip__column"><div id="bgLayers_comp-kj9u6e6n" data-hook="bgLayers" data-motion-part="BG_LAYER comp-kj9u6e6n" class="MW5IWV"><div data-testid="colorUnderlay" class="LWbAav Kv1aVt"></div><div id="bgMedia_comp-kj9u6e6n" data-motion-part="BG_MEDIA comp-kj9u6e6n" class="VgO9Yg"></div></div><div data-mesh-id="comp-kj9u6e6ninlineContent" data-testid="inline-content" class=""><div data-mesh-id="comp-kj9u6e6ninlineContent-gridContainer" data-testid="mesh-container-content"><!--$--><div id="comp-kjcp5ldh" class="Z_l5lU MMl86N zQ9jDz qvSjx3 Vq6kJx comp-kjcp5ldh wixui-rich-text" data-testid="richTextElement"><p class="font_5 wixui-rich-text__text" style="font-size:18px;">Follow Me</p></div><!--/$--><!--$--><div id="comp-kjcp46jj" class="comp-kjcp46jj WzbAF8"><ul class="mpGTIt" aria-label="Social Bar"><li id="dataItem-kjcp4sv3-comp-kjcp46jj" class="O6KwRn"><a data-testid="linkElement" href="https://www.linkedin.com/company/wix-com" target="_blank" class="oRtuWN" aria-label="LinkedIn"><img sizes="undefinedpx" srcset="https://static.wixstatic.com/media/6ea5b4a88f0b4f91945b40499aa0af00.png/v1/fill/w_24,h_24,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/6ea5b4a88f0b4f91945b40499aa0af00.png 1x, https://static.wixstatic.com/media/6ea5b4a88f0b4f91945b40499aa0af00.png/v1/fill/w_48,h_48,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/6ea5b4a88f0b4f91945b40499aa0af00.png 2x" id="img_0_comp-kjcp46jj" src="https://static.wixstatic.com/media/6ea5b4a88f0b4f91945b40499aa0af00.png/v1/fill/w_24,h_24,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/6ea5b4a88f0b4f91945b40499aa0af00.png" alt="LinkedIn" style="object-fit:cover" class="YaS0jR Tj01hh"></a></li><li id="dataItem-kjcp46po-comp-kjcp46jj" class="O6KwRn"><a data-testid="linkElement" href="https://www.twitter.com/wix" target="_blank" class="oRtuWN" aria-label="Twitter"><img sizes="undefinedpx" srcset="https://static.wixstatic.com/media/c7d035ba85f6486680c2facedecdcf4d.png/v1/fill/w_24,h_24,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/c7d035ba85f6486680c2facedecdcf4d.png 1x, https://static.wixstatic.com/media/c7d035ba85f6486680c2facedecdcf4d.png/v1/fill/w_48,h_48,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/c7d035ba85f6486680c2facedecdcf4d.png 2x" id="img_1_comp-kjcp46jj" src="https://static.wixstatic.com/media/c7d035ba85f6486680c2facedecdcf4d.png/v1/fill/w_24,h_24,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/c7d035ba85f6486680c2facedecdcf4d.png" alt="Twitter" style="object-fit:cover" class="YaS0jR Tj01hh"></a></li></ul></div><!--/$--></div></div></div><!--/$--><!--$--><div id="comp-kjcktbwb" class="comp-kjcktbwb YzqVVZ wixui-column-strip__column"><div id="bgLayers_comp-kjcktbwb" data-hook="bgLayers" data-motion-part="BG_LAYER comp-kjcktbwb" class="MW5IWV"><div data-testid="colorUnderlay" class="LWbAav Kv1aVt"></div><div id="bgMedia_comp-kjcktbwb" data-motion-part="BG_MEDIA comp-kjcktbwb" class="VgO9Yg"></div></div><div data-mesh-id="comp-kjcktbwbinlineContent" data-testid="inline-content" class=""><div data-mesh-id="comp-kjcktbwbinlineContent-gridContainer" data-testid="mesh-container-content"><!--$--><div id="comp-kjcktbxp" class="Z_l5lU MMl86N zQ9jDz qvSjx3 Vq6kJx comp-kjcktbxp wixui-rich-text" data-testid="richTextElement"><p class="font_9 wixui-rich-text__text" style="line-height:1.4em; font-size:13px;">© 2023 By Nicol Rider.<br class="wixui-rich-text__text">
-Proudly created with <span style="text-decoration:underline;" class="wixui-rich-text__text"><a href="https://wix.com?utm_campaign=vir_created_with" target="_blank" class="wixui-rich-text__text">Wix.com</a></span></p></div><!--/$--></div></div></div><!--/$--></div></section><!--/$--></div></div></div></div></footer></div></div><div id="SCROLL_TO_BOTTOM" class="Vd6aQZ ignore-focus SCROLL_TO_BOTTOM" role="region" tabindex="-1" aria-label="bottom of page"><span class="mHZSwn">bottom of page</span></div></div></div>
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+                <p>Learn more about my background, skills, and passion for design</p>
+            </div>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Profile Image">
+                </div>
+                <div class="about-text">
+                    <h3>Hello! I'm a Creative Designer</h3>
+                    <p>With over 5 years of experience in the design industry, I specialize in creating visually appealing and user-friendly digital experiences. My approach combines creativity with technical expertise to deliver solutions that exceed client expectations.</p>
+                    <p>I believe that good design is not just about aesthetics but also about functionality and user experience. Every project I undertake is approached with attention to detail and a commitment to excellence.</p>
+                    <div class="skills">
+                        <span class="skill">UI/UX Design</span>
+                        <span class="skill">Web Development</span>
+                        <span class="skill">Brand Identity</span>
+                        <span class="skill">Graphic Design</span>
+                        <span class="skill">Responsive Design</span>
+                        <span class="skill">Photography</span>
+                    </div>
+                    <a href="#contact" class="btn" style="margin-top: 20px;">Hire Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Portfolio</h2>
+                <p>Check out some of my recent projects and creative work</p>
+            </div>
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web Design</button>
+                <button class="filter-btn" data-filter="branding">Branding</button>
+                <button class="filter-btn" data-filter="graphic">Graphic Design</button>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-img">
+                        <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Project 1">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>E-commerce Website</h3>
+                        <p>Web Design</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="branding">
+                    <div class="portfolio-img">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Project 2">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Brand Identity Design</h3>
+                        <p>Branding</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="graphic">
+                    <div class="portfolio-img">
+                        <img src="https://images.unsplash.com/photo-1586232702178-f044c5f4d4b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Project 3">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Marketing Materials</h3>
+                        <p>Graphic Design</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-img">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Project 4">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Corporate Website</h3>
+                        <p>Web Design</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="branding">
+                    <div class="portfolio-img">
+                        <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Project 5">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Logo Design</h3>
+                        <p>Branding</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="graphic">
+                    <div class="portfolio-img">
+                        <img src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Project 6">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Social Media Graphics</h3>
+                        <p>Graphic Design</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>Feel free to reach out for collaborations or just a friendly hello</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Location</h3>
+                            <p>123 Design Street, Creative City</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>hello@portfolio.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
+                            <p>+1 234 567 8900</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-behance"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <a href="#" class="footer-logo">Portfolio</a>
+                    <p>I'm a passionate designer and developer creating beautiful digital experiences that make a difference. Let's work together to bring your ideas to life.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Web Design</a></li>
+                        <li><a href="#">UI/UX Design</a></li>
+                        <li><a href="#">Branding</a></li>
+                        <li><a href="#">Graphic Design</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Portfolio. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Portfolio Filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                portfolioItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
+                }
+            });
+        });
+        
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+        });
+        
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
 </body>
 </html>
