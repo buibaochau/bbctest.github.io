@@ -1,0 +1,63 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { createPageUrl } from './utils';
+
+export default function Layout({ children, currentPageName }) {
+  const navItems = [
+    { name: 'Resume', page: 'Resume' },
+    { name: 'Projects', page: 'Projects' },
+    { name: 'Contact', page: 'Contact' }
+  ];
+
+  return (
+    <div className="min-h-screen bg-[#f8f8f8]">
+      {/* Header */}
+      <header className="fixed top-0 left-0 right-0 bg-[#f8f8f8]/80 backdrop-blur-md z-50 border-b border-gray-200/50">
+        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+          <Link 
+            to={createPageUrl('Home')}
+            className="flex items-center gap-3 group"
+          >
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-lime-400 to-lime-500 flex items-center justify-center transition-transform group-hover:scale-110">
+              <span className="text-white font-bold text-lg">N</span>
+            </div>
+            <span className="font-semibold text-gray-900 text-lg tracking-tight">Nga Thanh Dang</span>
+          </Link>
+
+          <nav className="flex gap-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.page}
+                to={createPageUrl(item.page)}
+                className={`text-sm font-medium transition-colors hover:text-gray-900 ${
+                  currentPageName === item.page ? 'text-gray-900' : 'text-gray-600'
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="pt-20">
+        {children}
+      </main>
+
+      {/* Footer */}
+      <footer className="border-t border-gray-200 mt-20 py-12">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="text-sm text-gray-600">
+              © 2023 By Nicol Rider
+            </div>
+            <div className="flex gap-6">
+              <span className="text-sm font-medium text-gray-700">Follow Me</span>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}

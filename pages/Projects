@@ -1,0 +1,90 @@
+import React from 'react';
+import { ExternalLink, Folder } from 'lucide-react';
+
+export default function Projects() {
+  const projects = [
+    {
+      title: "Digital Marketing Campaign",
+      category: "Marketing",
+      description: "Developed and executed a comprehensive digital marketing strategy that increased brand engagement by 150%.",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+      color: "from-yellow-400 to-orange-500"
+    },
+    {
+      title: "Brand Identity Redesign",
+      category: "Design",
+      description: "Led a complete brand identity overhaul including logo, visual guidelines, and marketing materials.",
+      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop",
+      color: "from-purple-400 to-pink-500"
+    },
+    {
+      title: "Content Strategy Development",
+      category: "Strategy",
+      description: "Created a data-driven content strategy that improved organic traffic by 200% over 6 months.",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop",
+      color: "from-cyan-400 to-blue-500"
+    },
+    {
+      title: "Social Media Management",
+      category: "Social Media",
+      description: "Managed social media presence across multiple platforms, growing follower base by 80%.",
+      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop",
+      color: "from-green-400 to-teal-500"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen py-20 px-6">
+      <div className="max-w-6xl mx-auto space-y-16">
+        {/* Header */}
+        <div className="text-center space-y-4">
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900">Projects</h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            A showcase of my recent work and achievements across different areas.
+          </p>
+        </div>
+
+        {/* Projects Grid */}
+        <div className="grid md:grid-cols-2 gap-8">
+          {projects.map((project, index) => (
+            <div
+              key={index}
+              className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100"
+            >
+              {/* Project Image */}
+              <div className="relative h-64 overflow-hidden">
+                <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20 group-hover:opacity-30 transition-opacity z-10`}></div>
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute top-4 right-4 z-20">
+                  <div className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                    <ExternalLink className="w-5 h-5 text-gray-700" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Project Content */}
+              <div className="p-8 space-y-4">
+                <div className="flex items-center gap-3">
+                  <Folder className="w-5 h-5 text-gray-400" />
+                  <span className="text-sm font-medium text-gray-500 uppercase tracking-wider">
+                    {project.category}
+                  </span>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900">
+                  {project.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {project.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
