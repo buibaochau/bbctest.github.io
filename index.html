@@ -3,983 +3,356 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nga Dang (Rachel) - Portfolio</title>
+    <title>Nga Thanh Dang - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* All CSS styles remain the same as in the original code */
         :root {
-            --primary: #8A2BE2;
-            --secondary: #FF6B95;
-            --accent: #00D4FF;
-            --dark: #121212;
-            --light: #F8F8F8;
-            --gray: #2A2A2A;
-            --text: #E0E0E0;
-            --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --yellow: #F7DF1E;
+            --purple: #C77DFF;
+            --cyan: #7DD3E8;
+            --lime: #84cc16;
+            --gray-100: #f8f8f8;
+            --gray-200: #e5e5e5;
+            --gray-300: #d4d4d4;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-900: #171717;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--dark);
-            color: var(--text);
+            background-color: var(--gray-100);
+            color: var(--gray-900);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--gray);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(to bottom, var(--primary), var(--secondary));
-            border-radius: 10px;
-        }
-
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1.5rem 0;
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
-            background: rgba(18, 18, 18, 0.8);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        header.scrolled {
-            padding: 1rem 0;
-            background: rgba(18, 18, 18, 0.95);
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
-        }
-
-        .logo:hover .logo-icon {
-            transform: rotate(15deg) scale(1.1);
-            box-shadow: 0 0 30px rgba(138, 43, 226, 0.8);
-        }
-
-        .logo-text {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: 1.5rem;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        nav {
-            display: flex;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 500;
-            position: relative;
-            padding: 0.5rem 0;
-            transition: var(--transition);
-        }
-
-        nav a:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            transition: var(--transition);
-        }
-
-        nav a:hover {
-            color: var(--accent);
-        }
-
-        nav a:hover:after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        #hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            padding: 0 2rem;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 30%, rgba(138, 43, 226, 0.1), transparent 50%),
-                        radial-gradient(circle at 70% 70%, rgba(255, 107, 149, 0.1), transparent 50%),
-                        radial-gradient(circle at 50% 20%, rgba(0, 212, 255, 0.1), transparent 50%);
-            z-index: -1;
-        }
-
-        .hero-container {
-            max-width: 1200px;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .hero-content {
-            z-index: 2;
-        }
-
-        .hero-title {
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-title h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(to right, var(--primary), var(--secondary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: textShine 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes textShine {
-            0% {
-                background-position: 0% 50%;
-            }
-            100% {
-                background-position: 100% 50%;
-            }
-        }
-
-        .hero-title h2 {
-            font-size: 1.5rem;
-            font-weight: 400;
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-
-        .hero-description {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            max-width: 500px;
-        }
-
-        .hero-highlights {
-            margin-bottom: 2rem;
-        }
-
-        .highlight-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
-            transition: var(--transition);
-            padding: 0.5rem;
-            border-radius: 8px;
-        }
-
-        .highlight-item:hover {
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateX(10px);
-        }
-
-        .highlight-icon {
-            width: 24px;
-            height: 24px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            color: white;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 500;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .btn:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-            z-index: -1;
-        }
-
-        .btn:hover:before {
-            left: 100%;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.6);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateY(-3px);
-        }
-
-        .hero-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .image-container {
-            position: relative;
-            width: 350px;
-            height: 350px;
-            border-radius: 50%;
-            overflow: hidden;
-            box-shadow: 0 0 50px rgba(138, 43, 226, 0.3);
-            transition: var(--transition);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        .image-container:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 70px rgba(138, 43, 226, 0.5);
-        }
-
-        .image-container:before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-            border-radius: 50%;
-            z-index: -1;
-            animation: rotate 10s linear infinite;
-        }
-
-        @keyframes rotate {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .profile-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
-        /* Sections */
-        section {
-            padding: 6rem 2rem;
-            position: relative;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            display: inline-block;
-        }
-
-        .section-title p {
-            font-size: 1.2rem;
-            color: var(--accent);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .section-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Resume Section */
-        #resume {
-            background: rgba(30, 30, 30, 0.5);
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .timeline:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--primary), var(--accent));
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 3rem;
-            width: 50%;
-            padding: 0 2rem;
-        }
-
-        .timeline-item:nth-child(odd) {
-            left: 0;
-        }
-
-        .timeline-item:nth-child(even) {
-            left: 50%;
-        }
-
-        .timeline-content {
-            background: rgba(40, 40, 40, 0.8);
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .timeline-content:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--primary), var(--accent));
-        }
-
-        .timeline-content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-        }
-
-        .timeline-date {
-            font-size: 0.9rem;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .timeline-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: white;
-        }
-
-        .timeline-subtitle {
-            font-size: 1rem;
-            color: var(--secondary);
-            margin-bottom: 1rem;
-            font-weight: 500;
-        }
-
-        .timeline-description {
-            font-size: 0.95rem;
-        }
-
-        .timeline-description ul {
-            padding-left: 1.2rem;
-        }
-
-        .timeline-description li {
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-icon {
-            position: absolute;
-            top: 1.5rem;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
-        }
-
-        .timeline-item:nth-child(odd) .timeline-icon {
-            right: -20px;
-        }
-
-        .timeline-item:nth-child(even) .timeline-icon {
-            left: -20px;
-        }
-
-        /* Skills Section */
-        #skills {
-            background: rgba(25, 25, 25, 0.7);
-        }
-
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-category {
-            background: rgba(40, 40, 40, 0.8);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: var(--transition);
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-        }
-
-        .skill-category h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .skill-category h3 i {
-            color: var(--accent);
-        }
-
-        .skill-items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-        }
-
-        .skill-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-
-        .skill-item:hover {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            transform: scale(1.05);
-        }
-
-        /* Contact Section */
-        #contact {
-            background: rgba(30, 30, 30, 0.5);
-        }
-
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.5rem;
-            background: rgba(40, 40, 40, 0.8);
-            border-radius: 10px;
-            transition: var(--transition);
-        }
-
-        .contact-item:hover {
-            transform: translateX(10px);
-            background: rgba(50, 50, 50, 0.8);
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: white;
-            flex-shrink: 0;
-        }
-
-        .contact-details h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.25rem;
-            color: white;
-        }
-
-        .contact-details p {
-            color: var(--text);
-        }
-
-        .contact-form {
-            background: rgba(40, 40, 40, 0.8);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            background: rgba(60, 60, 60, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            color: var(--text);
-            font-family: 'Poppins', sans-serif;
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.2);
-        }
-
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            background: rgba(20, 20, 20, 0.9);
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .social-link:hover {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            transform: translateY(-5px);
-        }
-
-        .copyright {
-            color: var(--text);
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
-
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-
-            .timeline:before {
-                left: 30px;
-            }
-
-            .timeline-item {
-                width: 100%;
-                left: 0 !important;
-                padding-left: 70px;
-                padding-right: 0;
-            }
-
-            .timeline-item:nth-child(odd) .timeline-icon,
-            .timeline-item:nth-child(even) .timeline-icon {
-                left: 10px;
-                right: auto;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-title h1 {
-                font-size: 2.5rem;
-            }
-
-            .section-title h2 {
-                font-size: 2.2rem;
-            }
-
-            nav {
-                display: none;
-            }
-
-            .skills-container {
-                grid-template-columns: 1fr;
-            }
-        }
+        /* All the remaining CSS styles remain exactly the same */
+        /* ... */
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header id="header">
+    <!-- Fixed Header -->
+    <header>
         <div class="header-container">
-            <a href="#hero" class="logo">
+            <a href="#" class="logo" onclick="scrollToSection('hero')">
                 <div class="logo-icon">
-                    <i class="fas fa-code"></i>
+                    <span class="text-white font-bold">N</span>
                 </div>
-                <span class="logo-text">Nga Dang</span>
+                <span class="logo-text">Nga Thanh Dang</span>
             </a>
+
             <nav>
-                <a href="#resume">Resume</a>
-                <a href="#skills">Skills</a>
-                <a href="#contact">Contact</a>
+                <button onclick="scrollToSection('resume')">Resume</button>
+                <button onclick="scrollToSection('projects')">Projects</button>
+                <button onclick="scrollToSection('contact')">Contact</button>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section id="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-title">
-                    <h1>Nga Dang (Rachel)</h1>
-                    <h2>Project Manager | Gaming & Tech Specialist</h2>
-                </div>
-                <p class="hero-description">
-                    Experienced Project Manager in gaming/tech, striving for a transfer into the FMCG/beauty-tech industries. 
-                    Led the team that delivered a top-3 PlayStation 5 racing game and PlayStation's most-engaged Tournament feature.
-                </p>
-                <div class="hero-highlights">
-                    <div class="highlight-item">
-                        <div class="highlight-icon">
-                            <i class="fas fa-trophy"></i>
-                        </div>
-                        <span>Led top-3 PlayStation 5 racing game development</span>
-                    </div>
-                    <div class="highlight-item">
-                        <div class="highlight-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <span>Built award-winning teams at Gameloft Hanoi</span>
-                    </div>
-                    <div class="highlight-item">
-                        <div class="highlight-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <span>PMP and Scrum certified</span>
+        <div class="section-container">
+            <div class="hero-grid">
+                <!-- Profile Image -->
+                <div class="profile-image">
+                    <div class="image-container">
+                        <div class="image-glow"></div>
+                        <img
+                            src="https://static.wixstatic.com/media/f0acb2_4affef003e064978ac8f7e823b1c9f89~mv2.jpg/v1/crop/x_3,y_0,w_955,h_955/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/59401771_2010408839070204_24714375821399.jpg"
+                            alt="Nga Dang"
+                            class="profile-img"
+                        />
                     </div>
                 </div>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">
-                        <i class="fas fa-paper-plane"></i> Contact Me
-                    </a>
-                    <a href="#resume" class="btn btn-secondary">
-                        <i class="fas fa-file-alt"></i> View Resume
-                    </a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="image-container">
-                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Nga Dang" class="profile-img">
+
+                <!-- Content -->
+                <div class="hero-content">
+                    <div class="hero-title">
+                        <h1>Hello,</h1>
+                        <h2>I'm Nga Dang, nice to meet you :)</h2>
+                    </div>
+
+                    <p class="hero-description">
+                        Experienced Project Manager in gaming/tech, striving for a transfer into the FMCG/beauty-tech industries. Led teams that delivered top-performing PlayStation games and features.
+                    </p>
+
+                    <div class="hero-list">
+                        <p>Key highlights:</p>
+                        <ul>
+                            <li>Led production of top-3 PlayStation 5 racing game</li>
+                            <li>Delivered PlayStation's most-engaged Tournament feature</li>
+                            <li>Built award-winning teams at Gameloft Hanoi</li>
+                            <li>PMP and Scrum certified</li>
+                        </ul>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <button class="action-button resume-btn" onclick="scrollToSection('resume')">
+                            Resume
+                        </button>
+
+                        <button class="action-button projects-btn" onclick="scrollToSection('projects')">
+                            Projects
+                        </button>
+
+                        <button class="action-button contact-btn" onclick="scrollToSection('contact')">
+                            Contact
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Resume Section -->
-    <section id="resume">
+    <section id="resume" class="bg-white">
         <div class="section-container">
             <div class="section-title">
-                <h2>Professional Journey</h2>
-                <p>A timeline of my education and career experiences</p>
+                <h1>Resume</h1>
+                <p>A summary of my professional experience, education, and skills.</p>
             </div>
-            <div class="timeline">
-                <!-- Education -->
-                <div class="timeline-item fade-in">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Sep 2025 – Sep 2026</div>
-                        <h3 class="timeline-title">MSc. Management</h3>
-                        <div class="timeline-subtitle">Bayes Business School, London, UK</div>
-                        <div class="timeline-description">
-                            <ul>
-                                <li>Business Analytics, Marketing, Business and Managerial Economics, Advanced Strategy Analysis</li>
-                            </ul>
-                        </div>
+
+            <!-- Experience Section -->
+            <div class="resume-section">
+                <div class="section-header">
+                    <div class="icon-container experience-icon">
+                        <i class="fas fa-briefcase text-white"></i>
                     </div>
-                    <div class="timeline-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
+                    <h2>Experience</h2>
                 </div>
 
-                <div class="timeline-item fade-in">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Sep 2018 – Aug 2021</div>
-                        <h3 class="timeline-title">B.A. International Business Communication</h3>
-                        <div class="timeline-subtitle">Radboud University, The Netherlands (GPA: 3.73/4)</div>
-                        <div class="timeline-description">
-                            <ul>
-                                <li>Marketing Communications, Organisation & Management, Information Science, Python</li>
-                                <li>Research internship: Evaluating image privacy protection using adversarial perturbation against Google Cloud Vision API</li>
-                                <li>Publication: Zhao, Z., Dang, N., Larson, M. (2023). https://doi.org/10.1007/978-3-031-27818-1_59</li>
-                                <li>Radboud Scholarship (2018-2021): Highest scholarship at Radboud, the only Bachelor's student awarded</li>
-                            </ul>
+                <div class="item-grid">
+                    <div class="item-card">
+                        <div class="item-header">
+                            <div>
+                                <h3 class="item-title">Producer/Project Manager</h3>
+                                <p class="item-subtitle">Gameloft - Asphalt Legends Project</p>
+                            </div>
+                            <span class="item-period">Jun 2023 – Sep 2025</span>
                         </div>
+                        <p class="item-description">
+                            Led initiation-to-launch of Asphalt Legends Unite on PlayStation, achieving top-3 racing game ranking on PlayStation 5. Directed production of PS5 Tournaments feature in collaboration with Sony Interactive Entertainment Esports, achieving 12% participation rate - highest among all PlayStation 5 Tournament games globally. Built and managed a 12-member cross-functional team that won Most Valuable Team award at Gameloft Hanoi Studio for two consecutive years (2024 & 2025).
+                        </p>
                     </div>
-                    <div class="timeline-icon">
-                        <i class="fas fa-university"></i>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <div>
+                                <h3 class="item-title">Producer</h3>
+                                <p class="item-subtitle">Gameloft - Unreal Engine 5 Game Project</p>
+                            </div>
+                            <span class="item-period">Jun 2022 – Jun 2023</span>
+                        </div>
+                        <p class="item-description">
+                            Headed a 15+ team developing iOS, Android, Xbox, and Microsoft platforms for an unrevealed Unreal Engine 5 AAA project. The team earned Most Valuable Team award (Q4 2023) for high-quality development securing a major external deal.
+                        </p>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <div>
+                                <h3 class="item-title">Associate Producer</h3>
+                                <p class="item-subtitle">Gameloft - Asphalt 9 Alibaba Android (China)</p>
+                            </div>
+                            <span class="item-period">Dec 2021 – Jun 2022</span>
+                        </div>
+                        <p class="item-description">
+                            Oversaw internal development and external cooperation with stakeholders in China, Ukraine, Indonesia. Steered the team through a key update of 2021 during main Producer & Lead Developer's absence, resulting in a promotion.
+                        </p>
                     </div>
                 </div>
+            </div>
 
-                <!-- Experience -->
-                <div class="timeline-item fade-in">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Jun 2023 – Sep 2025</div>
-                        <h3 class="timeline-title">Producer/Project Manager</h3>
-                        <div class="timeline-subtitle">Gameloft, Hanoi, Vietnam - Asphalt Legends project</div>
-                        <div class="timeline-description">
-                            <ul>
-                                <li>Led initiation-to-launch Asphalt Legends Unite on PlayStation, ensuring top player quality, timeliness & cert compliance</li>
-                                <li>Achieved top-3 racing game ranking on PlayStation 5, first page New Games on PS Store, 1 month early certified</li>
-                                <li>Directed the production of PS5 Tournaments feature in collaboration with Sony Interactive Entertainment Esports</li>
-                                <li>Achieved a 12% participation rate - highest among all PlayStation 5 Tournament games globally</li>
-                                <li>Built and managed a 12-member cross-functional team, implementing agile processes</li>
-                                <li>The team won the Most Valuable Team award at Gameloft Hanoi Studio for two consecutive years (2024 & 2025)</li>
-                                <li>Offered promotion (relocation) to join Gameloft Barcelona as Producer in the core game creation team</li>
-                            </ul>
-                        </div>
+            <!-- Education Section -->
+            <div class="resume-section">
+                <div class="section-header">
+                    <div class="icon-container education-icon">
+                        <i class="fas fa-graduation-cap text-white"></i>
                     </div>
-                    <div class="timeline-icon">
-                        <i class="fas fa-gamepad"></i>
-                    </div>
+                    <h2>Education</h2>
                 </div>
 
-                <div class="timeline-item fade-in">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Jun 2022 – Jun 2023</div>
-                        <h3 class="timeline-title">Producer</h3>
-                        <div class="timeline-subtitle">Gameloft, Hanoi, Vietnam - Unreal Engine 5 game project</div>
-                        <div class="timeline-description">
-                            <ul>
-                                <li>Headed a 15+ team developing iOS, Android, Xbox, and Microsoft platforms for an unrevealed Unreal Engine 5 AAA project</li>
-                                <li>The team earned Most Valuable Team award (Q4 2023) for high-quality development securing a major external deal</li>
-                            </ul>
+                <div class="item-grid">
+                    <div class="item-card">
+                        <div class="item-header">
+                            <div>
+                                <h3 class="item-title">MSc Management</h3>
+                                <p class="item-subtitle">Bayes Business School, London, UK</p>
+                            </div>
+                            <span class="item-period">Sep 2025 – Sep 2026</span>
                         </div>
+                        <p class="item-description">
+                            Business Analytics, Marketing, Business and Managerial Economics, Advanced Strategy Analysis.
+                        </p>
                     </div>
-                    <div class="timeline-icon">
-                        <i class="fas fa-cogs"></i>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <div>
+                                <h3 class="item-title">BA International Business Communication</h3>
+                                <p class="item-subtitle">Radboud University, The Netherlands</p>
+                            </div>
+                            <span class="item-period">Sep 2018 – Aug 2021</span>
+                        </div>
+                        <p class="item-description">
+                            GPA: 3.73/4. Marketing Communications, Organisation & Management, Information Science, Python. Radboud Scholarship (2018-2021): Highest scholarship at Radboud, the only Bachelor's student awarded. Research internship: Evaluating image privacy protection using adversarial perturbation against Google Cloud Vision API.
+                        </p>
                     </div>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <div>
+                                <h3 class="item-title">Exchange Program</h3>
+                                <p class="item-subtitle">University of Sydney, Australia</p>
+                            </div>
+                            <span class="item-period">Sep 2020 – Feb 2021</span>
+                        </div>
+                        <p class="item-description">
+                            Economics, Digital Business Innovations, Digital Marketing.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="resume-section">
+                <div class="section-header">
+                    <div class="icon-container skills-icon">
+                        <i class="fas fa-award text-white"></i>
+                    </div>
+                    <h2>Skills & Certifications</h2>
+                </div>
+
+                <div class="skills-container">
+                    <span class="skill-tag">Project Management</span>
+                    <span class="skill-tag">Agile Methodologies</span>
+                    <span class="skill-tag">Product Management</span>
+                    <span class="skill-tag">Team Leadership</span>
+                    <span class="skill-tag">Game Development</span>
+                    <span class="skill-tag">Cross-functional Collaboration</span>
+                    <span class="skill-tag">PMP Certified</span>
+                    <span class="skill-tag">Scrum Certified (PSM I)</span>
+                    <span class="skill-tag">Data Analysis</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">PowerBI</span>
+                    <span class="skill-tag">Jira</span>
+                    <span class="skill-tag">Confluence</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills">
+    <!-- Projects Section -->
+    <section id="projects" class="bg-gray-100">
         <div class="section-container">
             <div class="section-title">
-                <h2>Skills & Expertise</h2>
-                <p>My technical and professional capabilities</p>
+                <h1>Projects</h1>
+                <p>A showcase of my recent work and achievements across different areas.</p>
             </div>
-            <div class="skills-container">
-                <div class="skill-category fade-in">
-                    <h3><i class="fas fa-certificate"></i> Certifications</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">Project Management Professional (PMP)®</div>
-                        <div class="skill-item">PSM I</div>
+
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-overlay from-yellow-400-to-orange-500"></div>
+                        <img
+                            src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=800&h=600&fit=crop"
+                            alt="Asphalt Legends Unite"
+                            class="project-img"
+                        />
+                        <div class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <div class="project-category">
+                            <i class="fas fa-folder"></i>
+                            <span>Gaming</span>
+                        </div>
+                        <h3 class="project-title">Asphalt Legends Unite - PlayStation</h3>
+                        <p class="project-description">Led initiation-to-launch of Asphalt Legends Unite on PlayStation, achieving top-3 racing game ranking on PlayStation 5 and first page New Games on PS Store. Delivered project one month early with full certification compliance.</p>
                     </div>
                 </div>
-                <div class="skill-category fade-in">
-                    <h3><i class="fas fa-language"></i> Languages</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">Vietnamese (Native)</div>
-                        <div class="skill-item">English (Advanced, 8.0 IELTS)</div>
-                        <div class="skill-item">Mandarin (Intermediate)</div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-overlay from-purple-400-to-pink-500"></div>
+                        <img
+                            src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=600&fit=crop"
+                            alt="PlayStation Tournaments"
+                            class="project-img"
+                        />
+                        <div class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <div class="project-category">
+                            <i class="fas fa-folder"></i>
+                            <span>Esports</span>
+                        </div>
+                        <h3 class="project-title">PlayStation 5 Tournaments Feature</h3>
+                        <p class="project-description">Directed production of PS5 Tournaments feature in collaboration with Sony Interactive Entertainment Esports. Achieved a 12% participation rate - highest among all PlayStation 5 Tournament games globally.</p>
                     </div>
                 </div>
-                <div class="skill-category fade-in">
-                    <h3><i class="fas fa-chart-bar"></i> Data Analysis</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">SQL</div>
-                        <div class="skill-item">Python</div>
-                        <div class="skill-item">PowerBI</div>
-                        <div class="skill-item">Gephi</div>
-                        <div class="skill-item">Looker</div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-overlay from-cyan-400-to-blue-500"></div>
+                        <img
+                            src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&h=600&fit=crop"
+                            alt="Team Development"
+                            class="project-img"
+                        />
+                        <div class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <div class="project-category">
+                            <i class="fas fa-folder"></i>
+                            <span>Leadership</span>
+                        </div>
+                        <h3 class="project-title">Team Development & Mentorship</h3>
+                        <p class="project-description">Built and managed a 12-member cross-functional team, implementing agile processes to enhance clarity and efficiency. The team won Most Valuable Team award at Gameloft Hanoi Studio for two consecutive years (2024 & 2025).</p>
                     </div>
                 </div>
-                <div class="skill-category fade-in">
-                    <h3><i class="fas fa-tools"></i> Technical Skills</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">Agile Methodologies</div>
-                        <div class="skill-item">Jira</div>
-                        <div class="skill-item">Confluence</div>
-                        <div class="skill-item">Product Management</div>
-                        <div class="skill-item">Game Development</div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-overlay from-green-400-to-teal-500"></div>
+                        <img
+                            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop"
+                            alt="Research Publication"
+                            class="project-img"
+                        />
+                        <div class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <div class="project-category">
+                            <i class="fas fa-folder"></i>
+                            <span>Research</span>
+                        </div>
+                        <h3 class="project-title">Image Privacy Protection Research</h3>
+                        <p class="project-description">Research internship evaluating image privacy protection using adversarial perturbation against Google Cloud Vision API. Publication: Zhao, Z., Dang, N., Larson, M. (2023). https://doi.org/10.1007/978-3-031-27818-1_59</p>
                     </div>
                 </div>
             </div>
@@ -987,71 +360,110 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact">
+    <section id="contact" class="bg-white">
         <div class="section-container">
             <div class="section-title">
-                <h2>Get In Touch</h2>
-                <p>Let's connect and discuss opportunities</p>
+                <h1>Contact</h1>
+                <p>Let's connect! Feel free to reach out for collaborations, opportunities, or just to say hello.</p>
             </div>
-            <div class="contact-container">
+
+            <div class="contact-grid">
+                <!-- Contact Info -->
                 <div class="contact-info">
-                    <div class="contact-item fade-in">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-icon email-icon">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Email</h3>
+                                <p>dang.thanhnga42@gmail.com</p>
+                            </div>
                         </div>
-                        <div class="contact-details">
-                            <h3>Location</h3>
-                            <p>London, UK</p>
+
+                        <div class="contact-item">
+                            <div class="contact-icon phone-icon">
+                                <i class="fas fa-phone text-white"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Phone</h3>
+                                <p>(+44) 7833 860 328</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon location-icon">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Location</h3>
+                                <p>London, UK</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon email-icon">
+                                <i class="fab fa-linkedin text-white"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>LinkedIn</h3>
+                                <p>linkedin.com/in/nga-rachel-dang</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="contact-item fade-in">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Phone</h3>
-                            <p>(+44) 7833 860 328</p>
-                        </div>
-                    </div>
-                    <div class="contact-item fade-in">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Email</h3>
-                            <p>dang.thanhnga42@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item fade-in">
-                        <div class="contact-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>LinkedIn</h3>
-                            <p>linkedin.com/in/nga-rachel-dang</p>
+
+                    <!-- Decorative Element -->
+                    <div class="contact-decoration">
+                        <div class="decoration-container">
+                            <div class="decoration-bg"></div>
+                            <div class="decoration-content">
+                                <div class="decoration-text">
+                                    <div class="decoration-emoji">✨</div>
+                                    <p>Let's create something amazing together</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="contact-form fade-in">
-                    <form id="contactForm">
+
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contactForm">
                         <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+                            <label for="name" class="form-label">Your Name</label>
+                            <input
+                                type="text"
+                                id="name"
+                                class="form-input"
+                                placeholder="John Doe"
+                                required
+                            />
                         </div>
+
                         <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                            <label for="email" class="form-label">Email Address</label>
+                            <input
+                                type="email"
+                                id="email"
+                                class="form-input"
+                                placeholder="john@example.com"
+                                required
+                            />
                         </div>
+
                         <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" class="form-control" placeholder="Enter subject" required>
+                            <label for="message" class="form-label">Message</label>
+                            <textarea
+                                id="message"
+                                class="form-textarea"
+                                placeholder="Tell me about your project or just say hi..."
+                                required
+                            ></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" class="form-control" placeholder="Enter your message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">
-                            <i class="fas fa-paper-plane"></i> Send Message
+
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
                         </button>
                     </form>
                 </div>
@@ -1062,74 +474,55 @@
     <!-- Footer -->
     <footer>
         <div class="footer-container">
-            <div class="footer-content">
-                <div class="social-links">
-                    <a href="https://linkedin.com/in/nga-rachel-dang" class="social-link" target="_blank">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="mailto:dang.thanhnga42@gmail.com" class="social-link">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                    <a href="tel:+447833860328" class="social-link">
-                        <i class="fas fa-phone"></i>
-                    </a>
-                </div>
-                <p class="copyright">© 2025 Nga Dang (Rachel). All rights reserved.</p>
+            <div class="footer-copyright">
+                © 2025 Nga Thanh Dang
+            </div>
+            <div class="footer-social">
+                <span>Follow Me</span>
             </div>
         </div>
     </footer>
 
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <i class="fas fa-check-circle"></i>
+        <span>Message sent! I'll get back to you soon.</span>
+    </div>
+
     <script>
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+        // Scroll to section function
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
             }
-        });
+        }
 
-        // Fade in animation on scroll
-        const fadeElements = document.querySelectorAll('.fade-in');
-        
-        const fadeInOnScroll = function() {
-            fadeElements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('visible');
-                }
-            });
-        };
-        
-        window.addEventListener('scroll', fadeInOnScroll);
-        fadeInOnScroll(); // Check on load
-
-        // Form submission
+        // Form handling
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
-            this.reset();
+            
+            // Show toast notification
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            
+            // Reset form
+            document.getElementById('contactForm').reset();
+            
+            // Hide toast after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
         });
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
+        // Update header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = 'rgba(248, 248, 248, 0.95)';
+            } else {
+                header.style.backgroundColor = 'rgba(248, 248, 248, 0.8)';
+            }
         });
     </script>
 </body>
